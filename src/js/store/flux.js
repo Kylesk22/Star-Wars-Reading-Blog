@@ -1,21 +1,42 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+				favorite: [],
+
+				allPeople: []
+			// demo: [
+			// 	{
+			// 		title: "FIRST",
+			// 		background: "white",
+			// 		initial: "white"
+			// 	},
+			// 	{
+			// 		title: "SECOND",
+			// 		background: "white",
+			// 		initial: "white"
+			// 	}
+			// ]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			// setFavorite: (val) => {
+			// 	setStore({favorite: [val]})
+			// },
+			setAllPeople: (val) => {
+				const store = getStore();
+				setStore({allPeople: store.allPeople.concat(val)})
+			},
+
+			setFavorite: (val) => {
+				const store = getStore();
+				setStore({favorite: store.favorite.concat(val) })
+			},
+
+			unsetFavorite: (val) => {
+				const store = getStore();
+				setStore:({favorite: store.favorite})
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
